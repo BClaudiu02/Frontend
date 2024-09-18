@@ -7,12 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageInfo = document.getElementById("pageInfo");
 
     let photos = [];
+    let filteredPhotos = [];
     let currentPage = 1;
     const itemsPerPage = 5;
 
     async function fetchPhotos() {
         const response = await fetch(apiUrl);
         photos = await response.json();
+        filteredPhotos = photos;
         displayPhotos(photos, currentPage);
         populateAuthors(photos);
         updatePageInfo();
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     authorDropdown.addEventListener("change", (e) => {
         const selectedAuthor = e.target.value;
-        const filteredPhotos = selectedAuthor
+        filteredPhotos = selectedAuthor
             ? photos.filter(photo => photo.author === selectedAuthor)
             : photos;
 
@@ -62,28 +64,28 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", () => {
         if (currentPage > 1) {
             currentPage--;
-            displayPhotos(photos, currentPage);
+            displayPhotos(filteredPhotos, currentPage);
             updatePageInfo();
             checkButtons();
         }
     });
 
     nextBtn.addEventListener("click", () => {
-        if (currentPage * itemsPerPage < photos.length) {
+        if (currentPage * itemsPerPage < filteredPhotos.length) {
             currentPage++;
-            displayPhotos(photos, currentPage);
+            displayPhotos(filteredPhotos, currentPage);
             updatePageInfo();
             checkButtons();
         }
     });
 
     function updatePageInfo() {
-        pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(photos.length / itemsPerPage)}`;
+        pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(filteredPhotos.length / itemsPerPage)}`;
     }
 
     function checkButtons() {
         prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage * itemsPerPage >= photos.length;
+        nextBtn.disabled = currentPage * itemsPerPage >= filteredphotos.length;
     }
 
     fetchPhotos();
