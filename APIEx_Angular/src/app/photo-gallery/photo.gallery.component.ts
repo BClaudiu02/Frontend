@@ -6,7 +6,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   styleUrls: ['./photo-gallery.component.css']
 })
 export class PhotoGalleryComponent implements OnChanges {
-  @Input() photos: any[] = []; // This must be present
+  @Input() photos: any[] = []; 
 
   currentPage = 1;
   itemsPerPage = 5;
