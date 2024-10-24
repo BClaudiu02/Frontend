@@ -1,0 +1,5 @@
+<div class="app-container">
+  <app-author-filter (authorSelected)="onAuthorSelected($event)"></app-author-filter>
+
+  <app-photo-gallery [photos]="filteredPhotos"></app-photo-gallery>
+</div>
