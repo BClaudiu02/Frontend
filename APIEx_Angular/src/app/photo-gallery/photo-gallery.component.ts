@@ -1,5 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
+interface Photo {
+  id: number;    
+  title: string; 
+  download_url: string;   
+  author: string;
+}
+
 @Component({
   selector: 'app-photo-gallery',
   templateUrl: './photo-gallery.component.html',
