@@ -1,0 +1,20 @@
+<div class="app-container">
+  <h1>{{ title }}</h1>
+
+  <div class="tabs">
+    <button *ngFor="let day of days" (click)="changeDay(day)">
+      {{ day }}
+    </button>
+    <button (click)="showSummary()">Summary</button>
+  </div>
+
+  <div class="content">
+    <div *ngIf="currentView === 'day'">
+      <app-day-view [date]="currentDay"></app-day-view>
+    </div>
+
+    <div *ngIf="currentView === 'summary'">
+      <app-summary></app-summary>
+    </div>
+  </div>
+</div>
