@@ -1,0 +1,23 @@
+<div class="dashboard-container">
+  <main class="main-content">
+
+    <div class="searchbar-top-center">
+      <app-search-bar (citySelected)="cityService.addCity($event)"></app-search-bar>
+    </div>
+    <div class="city-carousel-center">
+      <app-city-list></app-city-list>
+    </div>
+
+    <ng-container *ngIf="cityService.currentCity$ | async as currentCity">
+      <ng-container *ngIf="currentWeather$ | async as currentWeather">
+        <div class="container">
+          <h2>Today's highlights</h2>
+          <div class="data-container">
+            <app-highlights-grid [data]="currentWeather"></app-highlights-grid>
+            <app-weather-graph></app-weather-graph>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </main>
+</div>

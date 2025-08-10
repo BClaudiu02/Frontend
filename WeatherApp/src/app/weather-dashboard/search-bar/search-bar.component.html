@@ -1,0 +1,35 @@
+<div class="search-container">
+  <div class="search-wrapper">
+    <p-autoComplete
+      [(ngModel)]="query"
+      [suggestions]="filteredCities"
+      field="name"
+      (completeMethod)="searchCities($event)"
+      (onSelect)="onSelect($event.value)"
+      placeholder="Search here..."
+      [forceSelection]="false"
+      class="search-input"
+    >
+      <ng-template pTemplate="footer"></ng-template>
+      <ng-template pTemplate="empty">
+        <div class="p-autocomplete-item">No results found</div>
+      </ng-template>
+    </p-autoComplete>
+    <span class="search-icon">
+      <svg
+        class="icon"
+        aria-labelledby="title desc"
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 19.9 19.7"
+      >
+        <title id="title">Search Icon</title>
+        <desc id="desc">A magnifying glass icon.</desc>
+        <g class="search-path" fill="none" stroke="#ff8c00">
+          <path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4" />
+          <circle cx="8" cy="8" r="7" />
+        </g>
+      </svg>
+    </span>
+  </div>
+</div>

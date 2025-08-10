@@ -1,0 +1,76 @@
+:host {
+  display: inline-block;
+}
+
+.city-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0f7fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 15rem;
+  height: 5rem;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.active {
+    border: 2px solid #007bff;
+    background-color: #d0ecff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3);
+  }
+
+  .city-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+  }
+
+  .delete-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: rgba(255, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.2s;
+    line-height: 1;
+    padding: 0;
+  }
+
+   .favorite-btn {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    color: #ffc107;
+    opacity: 0;
+    transition: opacity 0.2s;
+    line-height: 1;
+    padding: 0;
+
+    &.filled i {
+      color: #ffc107;
+    }
+  }
+
+  &:hover .favorite-btn {
+    opacity: 1;
+  }
+
+  &:hover .delete-btn {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,14 @@
+<section class="highlights-section">
+  <div class="data-container">
+    <ng-container *ngIf="data as d">
+      <div class="highlight-grid">
+        <app-highlight-card
+          *ngFor="let type of types"
+          [type]="type"
+          [data]="d"
+          [id]="type"
+        ></app-highlight-card>
+      </div>
+    </ng-container>
+  </div>
+</section>
