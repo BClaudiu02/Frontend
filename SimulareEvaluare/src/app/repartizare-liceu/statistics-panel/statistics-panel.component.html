@@ -1,0 +1,11 @@
+<!-- Removed legacy Romanian block, only translation-based block remains -->
+<div *ngIf="statistici?.total">
+  <h5>{{ translations[language].title }} {{ translations[language].year }} {{ year }}:</h5>
+  <ul>
+    <li><b>{{ translations[language].total }}:</b> {{ statistici.total }}</li>
+    <li><b>{{ translations[language].madm }}:</b> {{ statistici.madm }}</li>
+    <li><b>{{ translations[language].romana }}:</b> {{ statistici.romana }}</li>
+    <li><b>{{ translations[language].mate }}:</b> {{ statistici.mate }}</li>
+    <li><b>{{ translations[language].absolvire }}:</b> {{ statistici.absolvire }}</li>
+  </ul>
+</div>

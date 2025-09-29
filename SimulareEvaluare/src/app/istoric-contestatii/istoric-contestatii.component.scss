@@ -1,0 +1,238 @@
+.header {
+  width: 100%;
+  height: 0;
+}
+
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 10;
+}
+
+$bg-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$card-bg: #fff;
+$shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+$shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.18);
+$padding: 2rem;
+$radius: 16px;
+$font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$primary-color: #667eea;
+$text-color: #2d3748;
+
+.stats label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: $primary-color;
+  font-size: 1.1rem;
+}
+
+.stats select {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f8fafc;
+  color: $text-color;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+}
+
+.stats select:focus {
+  border-color: $primary-color;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.15);
+}
+
+.back-button {
+  background: #fff;
+  border: 2px solid $primary-color;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $primary-color;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover,
+.back-button:focus {
+  background: $primary-color;
+  color: #fff;
+  border-color: darken($primary-color, 10%);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.18);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: $primary-color;
+  font-family: $font-stack;
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #667eea;
+    z-index: -1;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+
+  .stats {
+    background: $card-bg;
+    color: #2d3748;
+    padding: $padding;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    text-align: center;
+    width: 100%;
+    max-width: 1770px;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      box-shadow: $shadow-hover;
+      transform: translateY(-2px);
+    }
+
+    .stat-item {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-radius: 12px;
+      border-left: 4px solid $primary-color;
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $primary-color;
+      }
+    }
+  }
+
+  canvas {
+    margin-top: 2rem;
+    background: $card-bg;
+    padding: $padding;
+    border-radius: $radius;
+    width: 100%;
+    max-width: 1800px;
+    box-shadow: $shadow;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      box-shadow: $shadow-hover;
+      transform: translateY(-2px);
+    }
+  }
+
+  .graph-switch {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2.5rem 0 2rem 0;
+    padding: 0.8rem 0.5rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #667eea;
+      cursor: pointer;
+      padding: 0.45rem 1.3rem;
+      border-radius: 8px;
+      background: transparent;
+      border: 2px solid transparent;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      user-select: none;
+    }
+
+    label.selected {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: 2px solid #667eea;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats,
+    canvas {
+      max-width: 100%;
+      margin: 1rem 0;
+      padding: 1.5rem;
+    }
+
+    .stats .stat-item {
+      margin: 0.8rem 0;
+      padding: 0.8rem;
+
+      .stat-value {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

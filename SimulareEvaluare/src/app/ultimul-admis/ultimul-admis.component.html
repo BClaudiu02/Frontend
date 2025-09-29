@@ -1,0 +1,24 @@
+<div class="ultimul-admis-container">
+  <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
+    <button class="back-button" (click)="goBack()">{{ translations[language].back }}</button>
+    <button class="lang-switch" (click)="toggleLanguage()" style="margin-left:auto; min-width: 48px; padding: 6px 16px; border-radius: 20px; border: 1px solid #007bff; background: #f8f9fa; color: #007bff; font-weight: bold; cursor: pointer;">
+      {{ language === 'ro' ? 'EN' : 'RO' }}
+    </button>
+  </div>
+  <div class="page-header">
+    <h1>{{ translations[language].title }}</h1>
+    <p class="page-description">
+      {{ translations[language].desc }}
+    </p>
+  </div>
+
+  <app-ultimul-admis-filters [schools]="availableSchools" [specializations]="availableSpecializations"
+    [selectedFilters]="currentFilters" (filtersChange)="onFiltersChange($event)">
+  </app-ultimul-admis-filters>
+
+  <app-ultimul-admis-chart [allData]="allData" [selectedCombinations]="currentFilters.selectedCombinations">
+  </app-ultimul-admis-chart>
+
+  <app-ultimul-admis-table [data]="filteredData" [loading]="isLoading">
+  </app-ultimul-admis-table>
+</div>

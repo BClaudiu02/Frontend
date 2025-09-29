@@ -1,0 +1,54 @@
+<div class="filters-container">
+  <div class="filters-row">
+    <div class="filter-group">
+      <label for="school-select">{{ translations[language].school }}:</label>
+      <select id="school-select" [(ngModel)]="selectedFilters.school" (change)="onSchoolChange()"
+        class="filter-select school-select">
+        <option value="">{{ translations[language].allSchools }}</option>
+        <option *ngFor="let school of schools" [value]="school">
+          {{ school }}
+        </option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="specialization-select">{{ translations[language].specialization }}:</label>
+      <select id="specialization-select" [(ngModel)]="selectedFilters.specialization"
+        (change)="onSpecializationChange()" class="filter-select specialization-select"
+        [disabled]="!selectedFilters.school">
+        <option value="">{{ translations[language].selectSpec }}</option>
+        <option *ngFor="let spec of specializations" [value]="spec">
+          {{ spec }}
+        </option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <button type="button" (click)="addCombination()" class="add-button"
+        [disabled]="!selectedFilters.school || !selectedFilters.specialization">
+        {{ translations[language].add }}
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button type="button" (click)="resetFilters()" class="reset-button">
+        {{ translations[language].reset }}
+      </button>
+    </div>
+  </div>
+
+  <div class="selected-combinations" *ngIf="selectedFilters.selectedCombinations.length > 0">
+    <h4>Specializari selectate pentru grafic:</h4>
+    <div class="combinations-list">
+      <div class="combination-item" *ngFor="
+          let combination of selectedFilters.selectedCombinations;
+          let i = index
+        ">
+        <span class="combination-text">{{ combination.school }} - {{ combination.specialization }}</span>
+        <button type="button" (click)="removeCombination(i)" class="remove-button">
+          ×
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
